@@ -38,15 +38,12 @@ import retrofit2.Response;
 import retrofit2.http.POST;
 
 public class PostActivity extends AppCompatActivity implements onBackPressedListener{
-    public RecyclerAdapter adapter = MainActivity.adapter;
-    RecyclerView recyclerView = MainActivity.recyclerView;
     String title;
     String content;
     String toDay;
-    public static Integer id= 1;
-    public List<Post> list = MainActivity.list;
+    public static Integer id=1;
+    public RecyclerAdapter adapter = MainActivity.adapter;
     static Calendar calendar;
-    public static Post data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +52,6 @@ public class PostActivity extends AppCompatActivity implements onBackPressedList
         EditText contentEdit = (EditText)findViewById(R.id.contentEdit);
         TextView countText = (TextView)findViewById(R.id.countText);
         TextView contentCount = (TextView)findViewById(R.id.contentCount);
-        TextView idView = (TextView)findViewById(R.id.idView);
         calendar = Calendar.getInstance();
         Date day = calendar.getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd",java.util.Locale.getDefault());
@@ -88,6 +84,7 @@ public class PostActivity extends AppCompatActivity implements onBackPressedList
                         }
                     });
                     id++;
+                    adapter.notifyDataSetChanged();
                     finish();
 
                 }

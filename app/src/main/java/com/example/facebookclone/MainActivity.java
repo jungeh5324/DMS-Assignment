@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(response.isSuccessful()){
                     data = response.body();
                     list = data.posts;
-                    adapter = new RecyclerAdapter(getApplicationContext(), list);
+                    adapter = new RecyclerAdapter(list);
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }
@@ -107,9 +107,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if(response.isSuccessful()){
                     data = response.body();
                     list = data.posts;
-                    adapter = new RecyclerAdapter(getApplicationContext(), list);
-                    recyclerView.setAdapter(adapter);
+                    adapter = new RecyclerAdapter(list);
                     adapter.notifyDataSetChanged();
+                    recyclerView.setAdapter(adapter);
                 }
             }
 

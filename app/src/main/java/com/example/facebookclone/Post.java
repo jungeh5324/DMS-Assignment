@@ -7,7 +7,7 @@ public class Post {
         this.id=id;
         this.title=title;
         this.content=content;
-        this.create=create;
+        this.createdAt=create;
     }
     @SerializedName("id")
     private Integer id;
@@ -15,12 +15,11 @@ public class Post {
     private String title;
     @SerializedName("content")
     private String content;
-    @SerializedName("createAt")
-    private String create;
+    @SerializedName("createdAt")
+    private String createdAt;
     public Integer getId(){return id;}
     public String getTitle(){return title;}
     public String getContent(){return content;}
-    public String getCreate(){return create;}
-    public void setId(Integer id1){id = id1;}
+    public String getCreatedAt(){return createdAt;}
 
 }

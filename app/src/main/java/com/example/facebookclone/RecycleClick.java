@@ -58,7 +58,6 @@ public class RecycleClick extends AppCompatActivity {
                 MenuInflater menuInf = popupMenu.getMenuInflater();
                 menuInf.inflate(R.menu.post_menu,popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @SuppressLint("NonConstantResourceId")
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
@@ -68,7 +67,6 @@ public class RecycleClick extends AppCompatActivity {
                                 intentModify.putExtra("내용",content.getText());
                                 intentModify.putExtra("날짜",date.getText());
                                 intentModify.putExtra("id",id);
-                                intentModify.putExtra("pos",pos);
                                 finish();
                                 startActivity(intentModify);
                                 break;
@@ -91,24 +89,19 @@ public class RecycleClick extends AppCompatActivity {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             intent = getIntent();
-            pos = intent.getIntExtra("position",1);
             Integer id = intent.getIntExtra("id",1);
             getApi api = RetrofitAsd.getRetrofit().create(getApi.class);
             Call<Post> call = api.deleteData(id);
             call.enqueue(new Callback<Post>() {
                 @Override
                 public void onResponse(Call<Post> call, Response<Post> response) {
-                    System.out.println("삭제됨");
                 }
 
                 @Override
                 public void onFailure(Call<Post> call, Throwable t) {
-                    System.out.println("이잉?"+t);
                 }
             });
-            list.remove(pos);
-            adapter.notifyItemRemoved(pos);
-            adapter.notifyItemRangeChanged(pos,list.size());
+            adapter.notifyDataSetChanged();
             finish();
         }
     };

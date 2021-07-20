@@ -1,5 +1,6 @@
 package com.example.facebookclone;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -17,13 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
-    private Context mContext;
-    private List<Post> posts = null;
+    private List<Post> posts;
 
-    public RecyclerAdapter(Context context, List<Post> list){
+    public RecyclerAdapter(List<Post> list){
         posts = list;
-        mContext = context;
-
     }
 
     @NonNull
@@ -41,7 +39,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         Post item = posts.get(position);
         holder.title.setText(item.getTitle());
         holder.content.setText(item.getContent());
-        holder.date.setText(item.getCreate());
+        holder.date.setText(item.getCreatedAt());
         holder.id.setText("id : "+item.getId());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +48,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 Intent intent = new Intent(v.getContext(),RecycleClick.class);
                 intent.putExtra("제목",posts.get(position).getTitle());
                 intent.putExtra("내용",posts.get(position).getContent());
-                intent.putExtra("날짜",posts.get(position).getCreate());
+                intent.putExtra("날짜",posts.get(position).getCreatedAt());
                 intent.putExtra("id",posts.get(position).getId());
                 intent.putExtra("position",position);
                 context.startActivity(intent);

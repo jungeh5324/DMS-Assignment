@@ -28,7 +28,6 @@ import retrofit2.Response;
 
 public class ModifyActivity extends AppCompatActivity implements onBackPressedListener{
     Intent intentModify;
-    public List<Post> list = MainActivity.list;
     public RecyclerAdapter adapter = MainActivity.adapter;
     static Calendar calendar;
     @Override
@@ -38,11 +37,9 @@ public class ModifyActivity extends AppCompatActivity implements onBackPressedLi
         EditText titleModify = (EditText)findViewById(R.id.titleModify);
         EditText contentModify = (EditText)findViewById(R.id.contentModify);
         intentModify = getIntent();
-        int pos = intentModify.getIntExtra("pos",1);
         titleModify.setText(intentModify.getStringExtra("제목"));
         contentModify.setText(intentModify.getStringExtra("내용"));
         Integer id = intentModify.getIntExtra("id",1);
-        System.out.println("안드로이드 개싫어"+ id);
         TextView countText = (TextView)findViewById(R.id.countTextMod);
         TextView contentCount = (TextView)findViewById(R.id.contentCountMod);
         countText.setText(titleModify.getText().toString().length()+" / 20");
@@ -66,23 +63,19 @@ public class ModifyActivity extends AppCompatActivity implements onBackPressedLi
                     String title = titleModify.getText().toString();
                     String content = contentModify.getText().toString();
                     String toDay = dateFormat.format(day);
-                    adapter.notifyItemChanged(pos);
-                    adapter.notifyDataSetChanged();
-                    System.out.println(id);
                     Post post = new Post(id,title,content,toDay);
                     Call<Post> call = api.patchData(id,post);
                     call.enqueue(new Callback<Post>() {
                         @Override
                         public void onResponse(Call<Post> call, Response<Post> response) {
-                            System.out.println("이게 뭐노");
                         }
 
                         @Override
                         public void onFailure(Call<Post> call, Throwable t) {
-                            System.out.println("이게 뭐노;;"+t);
                         }
                     });
                     Toast.makeText(getApplicationContext(),"수정 되었습니다.",Toast.LENGTH_SHORT);
+                    adapter.notifyDataSetChanged();
                     finish();
                 }
                 else if(titleModify.length()==0&&contentModify.length()==0){
