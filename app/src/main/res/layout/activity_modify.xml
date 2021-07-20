@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ModifyActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#1478FF"
+        android:layout_weight="19">
+
+        <TextView
+            android:id="@+id/newText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:text="수정" />
+
+        <ImageButton
+            android:id="@+id/backButtonMod"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/back_ripple"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitXY"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center|left"
+            tools:ignore="VectorDrawableCompat" />
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="19">
+        <EditText
+            android:id="@+id/titleModify"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="제목"
+            android:maxLength="20" />
+        <TextView
+            android:id="@+id/countTextMod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="5dp"
+            android:text="0 / 20" />
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5">
+
+        <EditText
+            android:id="@+id/contentModify"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="내용"
+            android:gravity="top"
+            android:layout_marginTop="5dp"
+            android:maxLength="1000" />
+        <TextView
+            android:id="@+id/contentCountMod"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="0 / 1000"
+            android:gravity="right|top"
+            android:layout_marginRight="5dp"/>
+
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="19"
+        >
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="fitXY"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/gallery_ripple" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/modifyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="right|bottom"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/button_ripple"
+            android:text="수정" />
+
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center|left"
+            android:layout_marginLeft="160dp"
+            android:layout_marginBottom="3dp"
+            app:srcCompat="@drawable/no_image" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/imagePlusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/button_ripple"
+            android:layout_gravity="bottom|left"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="70dp"
+            android:text="사진 추가" />
+    </FrameLayout>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

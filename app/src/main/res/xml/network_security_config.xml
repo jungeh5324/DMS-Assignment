@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network_security_config>
+    <base-config cleartextTrafficPermitted="true" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">http</domain>
+    </domain-config>
+</network_security_config>
